@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 通用字体尺寸 -->
+    <dimen name="default_size_26">18dp</dimen>
+    <dimen name="default_size_24">16dp</dimen>
+    <dimen name="default_size_22">14dp</dimen>
+    <dimen name="default_size_21">14dp</dimen>
+    <dimen name="default_size_20">13dp</dimen>
+    <dimen name="default_size_18">12dp</dimen>
+    <dimen name="default_size_16">10dp</dimen>
+    <dimen name="default_size_15">9dp</dimen>
+    <dimen name="default_size_14">8dp</dimen>
+    <dimen name="default_size_12">6dp</dimen>
+    <!-- end of 通用字体尺寸 -->
+
+
+    <!-- 通用间距 -->
+    <dimen name="default_gap_70">47dp</dimen>
+    <dimen name="default_gap_50">34dp</dimen>
+    <dimen name="default_gap_34">23dp</dimen>
+    <dimen name="default_gap_30">20dp</dimen>
+    <dimen name="default_gap_26">18dp</dimen>
+    <dimen name="default_gap_24">16dp</dimen>
+    <dimen name="default_gap_20">12dp</dimen>
+    <dimen name="default_gap_16">10dp</dimen>
+    <dimen name="default_gap_14">8dp</dimen>
+    <dimen name="default_gap_10">6dp</dimen>
+    <dimen name="default_gap_8">6dp</dimen>
+    <dimen name="default_gap_6">4dp</dimen>
+    <dimen name="default_gap_4">3dp</dimen>
+    <dimen name="default_gap_2">1dp</dimen>
+    <!-- end of 通用间距 -->
+
+
+    <!-- 顶部导航条 -->
+    <dimen name="navi_height">45dip</dimen>
+    <dimen name="navi_bottom_line_height">1dip</dimen>
+    <dimen name="navi_item_height">44dip</dimen>
+    <dimen name="navi_item_width">45dip</dimen>
+    <dimen name="navi_padding_left">0dip</dimen>
+    <dimen name="navi_padding_top">0dip</dimen>
+    <dimen name="navi_padding_right">0dip</dimen>
+    <dimen name="navi_padding_bottom">0dip</dimen>
+    <dimen name="navi_btn_margin_right">6dp</dimen>
+    <dimen name="navi_btn_padding_left">11dp</dimen>
+    <dimen name="navi_btn_padding_right">11dp</dimen>
+    <dimen name="navi_btn_padding_top">5dp</dimen>
+    <dimen name="navi_btn_padding_bottom">5dp</dimen>
+    <dimen name="navi_textbtn_padding_left">10dp</dimen>
+    <dimen name="navi_textbtn_padding_right">10dp</dimen>
+    <dimen name="navi_textbtn_padding_top">0dp</dimen>
+    <dimen name="navi_textbtn_padding_bottom">0dp</dimen>
+    <dimen name="navi_multititle_padding_left">10dp</dimen>
+    <dimen name="navi_multititle_padding_right">10dp</dimen>
+    <dimen name="navi_multititle_padding_top">0dp</dimen>
+    <dimen name="navi_multititle_padding_bottom">0dp</dimen>
+    <dimen name="navi_btn_text">@dimen/default_size_18</dimen>
+    <dimen name="navi_multititle_text">@dimen/default_size_22</dimen>
+    <!-- end of 顶部导航条 -->
+
+    <dimen name="viewpager_indicator_spacing">10dip</dimen>
+    <dimen name="listview_item_margin">@dimen/default_gap_10</dimen>
+    <dimen name="keyh">35dp</dimen>
+    <dimen name="pay_layoutTip_mt">5dp</dimen>
+    <dimen name="pay_layoutTip_mb">5dp</dimen>
+    <dimen name="pay_layoutAmount_mb">5dp</dimen>
+
+</resources>
