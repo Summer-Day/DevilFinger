@@ -25,7 +25,7 @@ import butterknife.InjectView;
 public class MainActivity extends BaseActivity {
 
 
-    //test
+    //test hah
     @InjectView(R.id.content_frame)
     FrameLayout contentLayout;
     @InjectView(R.id.blur_image)
