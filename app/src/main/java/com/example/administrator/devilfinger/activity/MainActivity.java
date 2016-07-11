@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -23,7 +24,9 @@ import butterknife.InjectView;
 
 
 public class MainActivity extends BaseActivity {
-    //test update
+
+    @InjectView(R.id.toolbar)
+    Toolbar mToolbar;
     @InjectView(R.id.content_frame)
     FrameLayout contentLayout;
     @InjectView(R.id.blur_image)
@@ -46,26 +49,41 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
+
+        //init toolbar
+        initToolBar();
+    }
+
+    private void initToolBar() {
+
+        mToolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(mToolbar);
         mDrawerLayout.setScrimColor(Color.argb(100, 255, 255, 255));
         //初始化侧滑和毛玻璃效果
-        mDrawerToggle = new BlurFoldingActionBarToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+        mDrawerToggle = new BlurFoldingActionBarToggle(
+                this,
+                mDrawerLayout,
+                mToolbar,
+                R.string.drawer_open,
+                R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View view) {
                 super.onDrawerOpened(view);
-                setTitle(R.string.app_name);
+//                setTitle(R.string.app_name);
+                invalidateOptionsMenu();
             }
 
             @Override
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                setTitle(mCategory.getDisplayName());
-//                mMenu.findItem(R.id.action_refresh).setVisible(true);
-
+                invalidateOptionsMenu();
                 blurImage.setVisibility(View.GONE);
                 blurImage.setImageBitmap(null);
             }
         };
         mDrawerToggle.setBlurImageAndView(blurImage, contentLayout);
+
+        mDrawerToggle.syncState();
 
         //设置侧滑以及毛玻璃效果
         mDrawerLayout.setDrawerListener(mDrawerToggle);

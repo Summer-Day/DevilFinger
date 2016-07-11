@@ -2,7 +2,7 @@ package com.example.administrator.wangshuobaselib;
 
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -13,7 +13,7 @@ import android.widget.TextView;
  * @date 2016/7/5 14:56
  * @desc 文件描述
  */
-public class BaseActivity extends FragmentActivity {
+public class BaseActivity extends AppCompatActivity {
     protected ActionBar actionBar;
     private TextView tv;
 
