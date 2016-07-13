@@ -1,10 +1,15 @@
 package com.example.administrator.wangshuobaselib;
 
-import android.app.ActionBar;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+
+import com.zhy.http.okhttp.OkHttpUtils;
 
 /**
  * com.example.administrator.wangshuobase.BaseActivity
@@ -14,25 +19,49 @@ import android.widget.TextView;
  * @desc 文件描述
  */
 public class BaseActivity extends AppCompatActivity {
-    protected ActionBar actionBar;
-    private TextView tv;
+
+    /**
+     *
+     * 是否需要安全相关处理，如果需要，子类覆盖此方法，返回 true
+     *
+     */
+    protected boolean isSecurity() {
+        return false;
+    }
+    /**
+     * 是否打开安全屏幕
+     *
+     * @return
+     */
+    protected boolean isOpenSecureScreen() {
+        return false;
+    }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initActionBar();
-    }
+        if (isSecurity() && isOpenSecureScreen()) {
+            // 禁止截屏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        }
+        //设置屏幕透明
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+            window.setNavigationBarColor(Color.TRANSPARENT);
+        }
 
-    private void initActionBar() {
-        actionBar = getActionBar();
-//        View view = View.inflate(this, R.layout.actionbar_title, null);
-//        tv = (TextView) view.findViewById(R.id.tv_shimmer);
-//        actionBar.setCustomView(view);
-//        actionBar.setDisplayHomeAsUpEnabled(true); //给左上角图标的左边加上一个返回的图标
-//        actionBar.setDisplayShowHomeEnabled(true); //使左上角图标是否显示，如果设成false，则没有程序图标，仅仅就个标题，否则，显示应用程序图标，对应id为Android.R.id.home，对应ActionBar.DISPLAY_SHOW_HOME
-//        actionBar.setHomeButtonEnabled(true);
-//        actionBar.setDisplayShowTitleEnabled(false);
-//        actionBar.setDisplayShowCustomEnabled(true);
+        //加入activty 队列
+        RRHActivityStack.getInst().pushActivity(this);
+
     }
 
     @Override
@@ -45,5 +74,16 @@ public class BaseActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        //删除队列
+        RRHActivityStack.getInst().popActivity(this);
+        //取消okhttp请求
+        OkHttpUtils.getInstance().cancelTag(this);
+    }
+
 
 }

@@ -1,7 +1,6 @@
 package com.example.administrator.devilfinger;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 
 import com.example.administrator.devilfinger.lib.util.AndroidUtils;
 import com.example.administrator.devilfinger.lib.util.JDBLog;
@@ -13,7 +12,6 @@ public class DFApplication extends App {
 
     public static String TAG = "DFApplication";
 
-    private boolean mIsDebugMode = false;
 
     private static Context mContext;
 
@@ -44,7 +42,6 @@ public class DFApplication extends App {
 
         super.onCreate();
         sInstance = this;
-
         mContext = this.getApplicationContext();
         ContextUtil.setAppContext(mContext);
 
@@ -62,24 +59,14 @@ public class DFApplication extends App {
     }
 
 
-    private void initWorkMode() {
-        if ((mContext.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) == 0) {
-            mIsDebugMode = false;
-        } else {
-            mIsDebugMode = true;
-        }
-    }
+//    private void initWorkMode() {
+//        if ((mContext.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) == 0) {
+//            mIsDebugMode = false;
+//        } else {
+//            mIsDebugMode = true;
+//        }
+//    }
 
-    public boolean isDebugMode() {
-        return mIsDebugMode;
-    }
-
-    /**
-     * 此方法需要在 {@link #onCreate()} 方法执行完毕后调用才能生效。
-     */
-    public void setDebugMode(boolean mIsDebugMode) {
-        this.mIsDebugMode = mIsDebugMode;
-    }
 
 
 }

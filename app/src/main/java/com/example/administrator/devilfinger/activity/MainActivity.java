@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,7 +12,9 @@ import android.widget.ImageView;
 import com.example.administrator.devilfinger.R;
 import com.example.administrator.devilfinger.model.Category;
 import com.example.administrator.devilfinger.ui.fragment.DrawerFragment;
-import com.example.administrator.devilfinger.ui.fragment.FeedsFragment;
+import com.example.administrator.devilfinger.ui.fragment.MainFragment;
+import com.example.administrator.devilfinger.ui.fragment.RobMoneyFragment;
+import com.example.administrator.devilfinger.ui.fragment.SettingFragment;
 import com.example.administrator.devilfinger.ui.slideMenu.BlurFoldingActionBarToggle;
 import com.example.administrator.devilfinger.ui.slideMenu.FoldingDrawerLayout;
 import com.example.administrator.wangshuobaselib.BaseActivity;
@@ -35,16 +36,19 @@ public class MainActivity extends BaseActivity {
     @InjectView(R.id.drawer_layout)
     FoldingDrawerLayout mDrawerLayout;
 
-    private FeedsFragment mContentFragment;
+//    private MainFragment mContentFragment;
+//    private SettingFragment mSettingFragment;
+//    private RobMoneyFragment mRobMoneyFragment;
+      private BaseFragment baseFragment;
+
 
     //侧滑和毛玻璃效果
     private BlurFoldingActionBarToggle mDrawerToggle;
 
     private Category mCategory;
 
-    private Menu mMenu;
-
     @Override
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -88,16 +92,9 @@ public class MainActivity extends BaseActivity {
         //设置侧滑以及毛玻璃效果
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        setCategory(Category.robRedMoney);
+        setCategory(Category.main);
 
         replaceFragment(R.id.left_drawer, new DrawerFragment());
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        mMenu = menu;
-        return true;
     }
 
     public void setCategory(Category category) {
@@ -107,8 +104,21 @@ public class MainActivity extends BaseActivity {
         }
         mCategory = category;
         setTitle(mCategory.getDisplayName());
-        mContentFragment = FeedsFragment.newInstance();
-        replaceFragment(R.id.content_frame, mContentFragment);
+        switch (mCategory) {
+            case main:
+                baseFragment = MainFragment.newInstance();
+                break;
+            case robRedMoney:
+                baseFragment = RobMoneyFragment.newInstance();
+                break;
+            case setting:
+                baseFragment = SettingFragment.newInstance();
+                break;
+            default:
+                break;
+        }
+
+        replaceFragment(R.id.content_frame, baseFragment);
     }
 
     protected void replaceFragment(int viewId, BaseFragment fragment) {

@@ -1,1 +1,1 @@
-include ':app', ':wangshuobaselib'
+include ':app', ':wangshuobaselib', ':okhttputils'

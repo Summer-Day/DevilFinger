@@ -41,18 +41,6 @@ public class DrawerFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mActivity = (MainActivity) getActivity();
-
-        try
-        {
-                Typeface iconfont = Typeface.createFromFile("src/main/iconfont/iconfont.ttf");   //(DFApplication.getContext().getAssets(), "src/main/iconfont/iconfont.ttf");
-            like.setTypeface(iconfont);
-            like.setTextSize(40);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
         View contentView = inflater.inflate(R.layout.fragment_drawer, null);
         mListView = (ListView) contentView.findViewById(R.id.listView);
         mAdapter = new DrawerAdapter(mListView);
@@ -66,6 +54,16 @@ public class DrawerFragment extends BaseFragment {
             }
         });
         ButterKnife.inject(this, contentView);
+        try
+        {
+            Typeface iconfont = Typeface.createFromFile("src/main/iconfont/iconfont.ttf");   //(DFApplication.getContext().getAssets(), "src/main/iconfont/iconfont.ttf");
+            like.setTypeface(iconfont);
+            like.setTextSize(40);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         return contentView;
     }
 
