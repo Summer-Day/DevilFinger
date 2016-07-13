@@ -2,8 +2,9 @@ package com.example.administrator.devilfinger.ui.slideMenu;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -25,8 +26,8 @@ public class BlurFoldingActionBarToggle extends ActionBarDrawerToggle {
     private int mBlurRadius;
     private int mDownSampling;
 
-    public BlurFoldingActionBarToggle(Activity activity, DrawerLayout drawerLayout, int drawerImageRes, int openDrawerContentDescRes, int closeDrawerContentDescRes) {
-        super(activity, drawerLayout, drawerImageRes, openDrawerContentDescRes, closeDrawerContentDescRes);
+    public BlurFoldingActionBarToggle(Activity activity, DrawerLayout drawerLayout, Toolbar toolbar, int openDrawerContentDescRes, int closeDrawerContentDescRes) {
+        super(activity, drawerLayout, toolbar , openDrawerContentDescRes, closeDrawerContentDescRes);
         this.mActivity = activity;
         mBlurRadius = DEFAULT_RADIUS;
         mDownSampling = DEFAULT_DOWN_SAMPLING;

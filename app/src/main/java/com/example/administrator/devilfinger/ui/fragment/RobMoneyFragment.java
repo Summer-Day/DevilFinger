@@ -14,10 +14,10 @@ import butterknife.ButterKnife;
 /**
  * Created by storm on 14-3-25.
  */
-public class FeedsFragment extends BaseFragment {
+public class RobMoneyFragment extends BaseFragment {
 
-    public static FeedsFragment newInstance() {
-        FeedsFragment fragment = new FeedsFragment();
+    public static RobMoneyFragment newInstance() {
+        RobMoneyFragment fragment = new RobMoneyFragment();
         return fragment;
     }
 
@@ -29,7 +29,7 @@ public class FeedsFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View contentView = inflater.inflate(R.layout.fragment_feed, container, false);
+        View contentView = inflater.inflate(R.layout.fragment_robmoney, container, false);
         ButterKnife.inject(this, contentView);
 
         return contentView;
