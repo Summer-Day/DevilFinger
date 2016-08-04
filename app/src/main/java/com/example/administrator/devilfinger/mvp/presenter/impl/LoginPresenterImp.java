@@ -30,12 +30,12 @@ public class LoginPresenterImp implements LoginPresenter {
         loginModle.checkLogin(username, password, new LoginCallBack() {
             @Override
             public void onSuccess(String user) {
-                loginView.showLoginSuccessMsg(user);
+//                loginView.showLoginSuccessMsg(user);
             }
 
             @Override
             public void onFail(String errorMsg) {
-                loginView.showLoginFail(errorMsg);
+//                loginView.showLoginFail(errorMsg);
             }
         });
 
