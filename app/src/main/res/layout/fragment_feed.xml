@@ -9,6 +9,11 @@
         android:text="main"
         android:textSize="@dimen/fontsize30"
         android:layout_centerHorizontal="true"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/detail"/>
 
 
 </RelativeLayout>

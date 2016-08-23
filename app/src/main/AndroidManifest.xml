@@ -17,6 +17,13 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.MainActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
+
         <service
             android:name=".activity.RobMoney"
             android:enabled="true"

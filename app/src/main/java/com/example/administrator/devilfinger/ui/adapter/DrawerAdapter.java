@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.administrator.devilfinger.DFApplication;
 import com.example.administrator.devilfinger.R;
-import com.example.administrator.devilfinger.model.Category;
+import com.example.administrator.devilfinger.model.enumbean.Category;
 
 
 /**

@@ -1,17 +1,21 @@
 package com.example.administrator.devilfinger.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.example.administrator.devilfinger.R;
-import com.example.administrator.devilfinger.model.Category;
+import com.example.administrator.devilfinger.model.enumbean.Category;
 import com.example.administrator.devilfinger.ui.fragment.DrawerFragment;
+import com.example.administrator.devilfinger.ui.fragment.GsFragment;
 import com.example.administrator.devilfinger.ui.fragment.MainFragment;
 import com.example.administrator.devilfinger.ui.fragment.RobMoneyFragment;
 import com.example.administrator.devilfinger.ui.fragment.SettingFragment;
@@ -35,11 +39,7 @@ public class MainActivity extends BaseActivity {
     //主控件
     @InjectView(R.id.drawer_layout)
     FoldingDrawerLayout mDrawerLayout;
-
-//    private MainFragment mContentFragment;
-//    private SettingFragment mSettingFragment;
-//    private RobMoneyFragment mRobMoneyFragment;
-      private BaseFragment baseFragment;
+    private BaseFragment baseFragment;
 
 
     //侧滑和毛玻璃效果
@@ -47,12 +47,18 @@ public class MainActivity extends BaseActivity {
 
     private Category mCategory;
 
+    public static void startActivity(Activity context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
+
     @Override
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //init toolbar
         initToolBar();
@@ -113,6 +119,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case setting:
                 baseFragment = SettingFragment.newInstance();
+                break;
+            case gs:
+                baseFragment = GsFragment.newInstance();
                 break;
             default:
                 break;

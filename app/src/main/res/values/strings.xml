@@ -6,6 +6,8 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
+    <string name="tvText">大家好！我叫%1$s请多关照，我今年%2$d岁,我的体重也是%2$dkg</string>
+
 
     <!-- -->
     <string name="icons">&#xe61e;&#xe61b;</string>

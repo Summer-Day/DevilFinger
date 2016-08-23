@@ -1,9 +1,11 @@
 package com.example.administrator.devilfinger.mvp.presenter.impl;
 
+import com.example.administrator.devilfinger.model.bean.LoginResult;
 import com.example.administrator.devilfinger.mvp.callback.LoginCallBack;
 import com.example.administrator.devilfinger.mvp.modle.LoginModle;
 import com.example.administrator.devilfinger.mvp.presenter.LoginPresenter;
 import com.example.administrator.devilfinger.mvp.view.LoginView;
+import com.example.administrator.wangshuobaselib.lib.util.GsonUtil;
 
 /**
  * com.example.administrator.devilfinger.mvp.presenter.impl.LoginPresenterImp
@@ -30,7 +32,13 @@ public class LoginPresenterImp implements LoginPresenter {
         loginModle.checkLogin(username, password, new LoginCallBack() {
             @Override
             public void onSuccess(String user) {
-//                loginView.showLoginSuccessMsg(user);
+                LoginResult loginResult = GsonUtil.GsonToBean(user, LoginResult.class);
+                if (loginResult.isSuccessfulRequest()) {
+                    loginView.showLoginSuccessMsg("S");
+                }else
+                {
+                    loginView.showLoginSuccessMsg("F");
+                }
             }
 
             @Override

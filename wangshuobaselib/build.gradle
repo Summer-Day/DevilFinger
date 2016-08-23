@@ -25,4 +25,5 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //圆形控件
     compile project(':okhttputils')
+    compile 'com.google.code.gson:gson:2.7'
 }
